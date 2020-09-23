@@ -7,17 +7,62 @@
 
 body {
     height: 100vh;
+}
+
+.all {
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
 
-
+.all.blur {
+    filter: blur(2px);
 }
 
 h1 {
     text-align: center;
-    padding: 50px 0;
+    padding: 40px 0;
     font-size: 40px;
+}
+
+.instruction {
+    font-size: 18px;
+    padding: 5px 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.colors button,
+.clear {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.colors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
 }
 
 .wrapper {
@@ -32,18 +77,64 @@ h1 {
 .wrapper>div {
     width: 6.25%;
     height: 6.25%;
-    border: 0.1px solid black;
+    border: 0.1px solid rgba(0, 0, 0, 0.03);
 }
 
 .black {
     background-color: black;
 }
 
-button {
-    font-size: 24px;
-    padding: 10px 20px;
-    margin: 20px;
+.modal-wrapper {
+    display: none;
 }
+
+.modal-wrapper.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 90%;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 5px black;
+}
+
+.modal h2 {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 20px;
+}
+
+.modal p {
+    line-height: 1.5;
+    margin-bottom: 8px;
+    text-align: justify;
+
+}
+
+.close {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.close:hover {
+    transform: scale(1.1);
+}
+
 
 
 
@@ -52,11 +143,38 @@ button {
         width: 400px;
         height: 400px;
     }
+
+
+
+    .modal {
+        width: 80%;
+    }
+
+    .modal h2 {
+        font-size: 2.5em
+    }
+
+    .modal p {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .close {
+        font-size: 50px;
+    }
 }
 
 @media (min-width: 600px) {
     .wrapper {
         width: 600px;
         height: 600px;
+    }
+
+    .modal {}
+}
+
+@media (min-width: 1200px) {
+    .modal {
+        width: 60%;
     }
 }
