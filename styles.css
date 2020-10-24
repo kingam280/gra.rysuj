@@ -86,6 +86,7 @@ h1 {
 
 .modal-wrapper {
     display: none;
+
 }
 
 .modal-wrapper.active {
@@ -109,7 +110,7 @@ h1 {
     position: relative;
     border-radius: 20px;
     box-shadow: 0 0 15px 5px black;
-    overflow: scroll;
+
 }
 
 .modal h2 {

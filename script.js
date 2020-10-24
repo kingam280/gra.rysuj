@@ -1,22 +1,41 @@
 const divs = document.querySelectorAll('.wrapper>div');
 const btn = document.querySelector('.clear');
-const colors = document.querySelectorAll('div>button')
+const colors = document.querySelectorAll('.colors>button')
 const redBtn = document.querySelector('.red')
 const yellowBtn = document.querySelector('.yellow')
 
+let drawActive = false;
+
 //rysowanie różnymi kolorami
-colors.forEach(function (div) {
-    div.addEventListener('click', function () {
+colors.forEach(function (color) {
+    color.addEventListener('click', function () {
         let color = this.classList;
         divs.forEach(function (div) {
-            div.addEventListener('click', function () {
+            div.addEventListener('mousedown', function () {
+                this.className = color;
+                drawActive = true;
+            });
+        })
+
+        divs.forEach(function (div) {
+            div.addEventListener('mousemove', function () {
+                if (drawActive) {
+                    this.className = color;
+                }
+            });
+        })
+
+        divs.forEach(function (div) {
+            div.addEventListener('mouseup', function () {
+                drawActive = false;
                 this.className = color;
             });
         })
     });
-
-
 })
+
+
+
 
 //wymazywanie
 divs.forEach(function (div) {
@@ -34,10 +53,17 @@ btn.addEventListener('click', function () {
 })
 
 //pop up
+const modalElements = document.querySelector('.modal-wrapper');
+const game = document.querySelector('.all');
+const instruction = document.querySelector('.instruction');
+const closeBtn = document.querySelector('.close');
+
 function modal() {
-    document.querySelector('.modal-wrapper').classList.toggle('active');
-    document.querySelector('.all').classList.toggle('blur');
+    modalElements.classList.toggle('active');
+    game.classList.toggle('blur');
 }
 
-document.querySelector('.instruction').addEventListener('click', modal)
-document.querySelector('.close').addEventListener('click', modal)
+instruction.addEventListener('click', modal)
+closeBtn.addEventListener('click', modal)
+
+window.setTimeout(modal, 1000)
